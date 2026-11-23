@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Internship Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>InternHub</h1>
+      <nav>
+        <button id="explore-btn" class="active" onclick="showExplore()">Explore</button>
+        <button id="tracker-btn" onclick="showTracker()">My Applications (<span id="app-count">0</span>)</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="explore-section">
+      <div class="filters">
+        <input type="text" id="search-box" placeholder="Search role or company..." onkeyup="filterInternships()">
+        <select id="location-select" onchange="filterInternships()">
+          <option value="All">All Locations</option>
+          <option value="Remote">Remote</option>
+          <option value="Hybrid">Hybrid</option>
+          <option value="On-site">On-site</option>
+        </select>
+      </div>
+
+      <div id="internship-list" class="grid"></div>
+    </section>
+
+    <section id="tracker-section" class="hidden">
+      <h2>Application Tracker</h2>
+      <div id="applications-list"></div>
+    </section>
+
+    <section id="details-box" class="box hidden">
+      <h2 id="detail-title"></h2>
+      <p id="detail-company"></p>
+      <p id="detail-info"></p>
+      <p id="detail-desc"></p>
+      <button id="detail-apply-btn" class="btn">Apply Now</button>
+      <button class="btn secondary" onclick="closeDetails()">Close</button>
+    </section>
+
+    <section id="apply-box" class="box hidden">
+      <h2 id="apply-title"></h2>
+      <form onsubmit="submitApplication(event)">
+        <input type="hidden" id="apply-id">
+        <label>Your Name</label>
+        <input type="text" id="student-name" required>
+
+        <label>Email</label>
+        <input type="email" id="student-email" required>
+
+        <label>College</label>
+        <input type="text" id="student-college" required>
+
+        <label>Why should we hire you?</label>
+        <textarea id="student-note" rows="3" required></textarea>
+
+        <button type="submit" class="btn">Submit Application</button>
+        <button type="button" class="btn secondary" onclick="closeApply()">Cancel</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
